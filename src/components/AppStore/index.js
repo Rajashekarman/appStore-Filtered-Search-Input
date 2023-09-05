@@ -316,7 +316,7 @@ class AppStore extends Component {
   getFilteredSearchInput = () => {
     const {searchInput} = this.state
     const filteredSearchResults = appsList.filter(eachApp =>
-      eachApp.appName.includes(searchInput),
+      eachApp.appName.toLowerCase().includes(searchInput.toLowerCase()),
     )
     return filteredSearchResults
   }
@@ -324,7 +324,7 @@ class AppStore extends Component {
   render() {
     const {activeTabId} = this.state
     const filteredSearchResults = this.getFilteredSearchInput()
-    const filteredStores = this.getFilteredStores()
+    const filteredStores = this.getFilteredStores(filteredSearchResults)
     return (
       <div>
         <h1>App Store</h1>
